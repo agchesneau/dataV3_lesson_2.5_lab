@@ -25,11 +25,20 @@ ELSE 'weekday'
 END AS 'day_type'
 FROM rental
 LIMIT 20;
+
+SELECT *, dayname(rental_date) AS 'day',
+CASE
+WHEN dayname(rental_date) IN ('Saturday', 'Sunday') THEN 'weekend'
+ELSE 'weekday'
+END AS 'day_type'
+FROM rental
+LIMIT 20;
 -- 9
 SELECT Distinct(release_year) from film;
 -- 10
 SELECT title FROM film
 WHERE title LIKE '%ARMAGEDDON%';
+
 -- 11
 SELECT title FROM film
 WHERE title LIKE '%APOLLO';
